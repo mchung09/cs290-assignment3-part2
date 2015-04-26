@@ -10,3 +10,6 @@ Start: Sat, 25 Apr 2015 18:10:00 -0400
 End: Sun, 26 Apr 2015 00:59:41 -0400
 Tasks: Updated the javascript file to fetch data from Gists
 
+Start: Sun, 26 Apr 2015 01:01:00 -0400
+End: Sun, 26 Apr 2015 03:33:02 -0400
+Tasks: Store the fetched gists into local storage, then print them out on the html page
