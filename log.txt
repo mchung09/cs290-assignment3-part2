@@ -17,3 +17,7 @@ Tasks: Store the fetched gists into local storage, then print them out on the ht
 Start: Sun, 26 Apr 2015 13:00:00 -0400
 End: Sun, 26 Apr 2015 19:07:57 -0400
 Tasks: Added favorite buttons to each of the list
+
+Start: Sun, 26 Apr 2015 19:15:00 -0400
+End: Sun, 26 Apr 2015 19:40:59 -0400
+Tasks: Added hyperlinks into the URLs of each Gist
