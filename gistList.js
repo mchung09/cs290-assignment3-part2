@@ -21,7 +21,7 @@ var fetchdata = function(x){
       		var gistLog = JSON.parse(this.responseText);
 
       		for(var i = 0; i < x; i++) {
-      			settings.originalGistList.push(new gistObj(gistLog[i].description, gistLog[i].url, (i+1)));
+      			settings.originalGistList.push(new gistObj(gistLog[i].description, gistLog[i].url, i));
       		}
 
 
@@ -74,34 +74,40 @@ function createGistsList(ul) {
 function liGist(g) {
 	var dl = document.createElement('dl');
 	var entry = dlEntry(g.descript, g.urlLink, g.favorite);
-	dl.appendChild(entry.dt);
-	dl.appendChild(entry.dd);
 	dl.appendChild(entry.button);
+	dl.appendChild(entry.dt);
+	dl.appendChild(entry.a);
 	
-	/*fbutton.onclick = function(){
-	var gistId = this.getAttribute("gistId"); //this is what you have saved before
-	var toBeFavoredGist = findById(gistId);
-	//here you add the gist to your favorite list in the localStorage and remove it from the gist list and add it to favorite list
-	}*/
-
-
 	
-
 	return dl;
 }
 
 function dlEntry(term, definition, favorite) {
 	var dt = document.createElement('dt');
-	var dd = document.createElement('dd');
+	var a = document.createElement('a');
 	var fbutton = document.createElement("button");
 	
 	
 	dt.innerText = term;
-	dd.innerText = definition;
+	//I got the linking information from Stack Overflow, as I couldn't pass the code
+	//by innerHTML for some reason. http://stackoverflow.com/questions/4772774/how-do-i-create-a-link-using-javascript
+	var linkText = document.createTextNode(definition);
+	a.appendChild(linkText);
+	a.href = definition;
 	fbutton.innerHTML = "+";
 	fbutton.setAttribute("gistID", favorite);
 
-	return {'dt':dt, 'dd':dd, 'button':fbutton  };
+	fbutton.onclick = function(){
+	
+		alert(favorite);
+
+
+	//var gistId = this.getAttribute("gistId"); //this is what you have saved before
+	//var toBeFavoredGist = findById(gistId);
+	//here you add the gist to your favorite list in the localStorage and remove it from the gist list and add it to favorite list
+	}
+
+	return {'dt':dt, 'a':a, 'button':fbutton  };
 }
 
 
