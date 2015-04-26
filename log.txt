@@ -6,3 +6,7 @@ Start: Sat, 25 Apr 2015 16:25:00 -0400
 End: Sat, 25 Apr 2015 16:27:28 -0400
 Tasks: Created initial html, js, and log files
 
+Start: Sat, 25 Apr 2015 18:10:00 -0400
+End: Sun, 26 Apr 2015 00:59:41 -0400
+Tasks: Updated the javascript file to fetch data from Gists
+
