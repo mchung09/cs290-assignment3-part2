@@ -1,0 +1,32 @@
+h1 {
+	position: relative;
+	float: left;
+	font-size: 20px;
+
+}
+
+h2 {
+	position: relative;
+	float: right;
+	font-size: 20px;
+}
+
+.gists {
+	text-align: left;
+	position: relative;
+	border-width:2px;
+    border-style:solid;
+    border-color:black;
+	font-size: 36px;
+	top: 100px;
+}
+
+.favGists {
+
+	position: relative;
+	border-width:2px;
+    border-style:solid;
+    border-color:black;
+	font-size: 36px;
+	top: 100px;
+}
