@@ -1,32 +1,45 @@
-h1 {
+header {
 	position: relative;
+	font-size: 20px;
+}
+
+
+section {
+	text-align: left;
+	position: relative;
+	width: 45%;
 	float: left;
-	font-size: 20px;
-
+	border-width:2px;
+    border-style:solid;
+    border-color:black;
+	font-size: 14px;
+	top: 100px;
 }
 
-h2 {
-	position: relative;
-	float: right;
-	font-size: 20px;
-}
+dl {
 
-.gists {
 	text-align: left;
 	position: relative;
 	border-width:2px;
-    border-style:solid;
+	border-bottom-style: solid;
     border-color:black;
-	font-size: 36px;
-	top: 100px;
+    padding: 0px;
+	list-style-type:none;
+
 }
 
-.favGists {
+li {
+	padding: 0px;
+	list-style-type:none;
+}
 
-	position: relative;
-	border-width:2px;
-    border-style:solid;
-    border-color:black;
-	font-size: 36px;
-	top: 100px;
+ul {
+	padding: 0px;
+	list-style-type:none;
+}
+
+label {
+	font-style: italic;
+	font-size: 22px;
+
 }

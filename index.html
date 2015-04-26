@@ -8,28 +8,24 @@
 </head>
 <body>
 	<header>
-		<h1>
-			<input type="radio" name="prlanguage" value="Javascript">
-			<label>Javascript</label>
-			<input type="radio" name="prlanguage" value="SQL">
-			<label>SQL</label>
-			<input type="radio" name="prlanguage" value="JSON">
-			<label>JSON</label>
-			<input type="radio" name="prlanguage" value="Python">
-			<label>Python</label>
-		</h1>
-		<h2>
-		    <input type="text" name="search-value">
-			<input type="button" value="Fetch Gists" onclick="">
-		</h2>
+		<input type="radio" name="prlanguage" value="Javascript">
+		<label>Javascript</label>
+		<input type="radio" name="prlanguage" value="SQL">
+		<label>SQL</label>
+		<input type="radio" name="prlanguage" value="JSON">
+		<label>JSON</label>
+		<input type="radio" name="prlanguage" value="Python">
+		<label>Python</label>
+		<input type="text" name="search-value">
+		<input type="button" value="Fetch Gists" onclick="">
 	</header>
 	<section>
-		<div class="gists">
-		GISTS
-		</div>
-		<div class="favGists">
-		Favorite GISTS
-		</div>
+		<label>GISTS</label>
+		<ul id="gist-list">
+		</ul>		
+	</section>
+	<section>
+		<label>Favorite GISTS</label>
 	</section>
 </body>
 </html>
