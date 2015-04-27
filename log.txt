@@ -33,3 +33,7 @@ Tasks: Fixed local storage and settings array errors
 Start: Sun, 26 Apr 2015 22:42:00 -0400
 End: Sun, 26 Apr 2015 23:48:54 -0400
 Tasks: Added interactive components between gists and favorite gists
+
+Start: Sun, 26 Apr 2015 23:50:00 -0400
+End: Mon, 27 Apr 2015 00:36:35 -0400
+Tasks: Fixed Favorite List Error on Refresh
