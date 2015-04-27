@@ -21,3 +21,11 @@ Tasks: Added favorite buttons to each of the list
 Start: Sun, 26 Apr 2015 19:15:00 -0400
 End: Sun, 26 Apr 2015 19:40:59 -0400
 Tasks: Added hyperlinks into the URLs of each Gist
+
+Start: Sun, 26 Apr 2015 19:50:00 -0400
+End: Sun, 26 Apr 2015 21:31:22 -0400
+Tasks: Button copies the gist to the favorite list
+
+Start: Sun, 26 Apr 2015 21:35:22 -0400
+End: Sun, 26 Apr 2015 22:41:10 -0400
+Tasks: Fixed local storage and settings array errors
