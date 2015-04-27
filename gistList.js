@@ -28,10 +28,6 @@ var fetchdata = function(x){
 
       		localStorage.setItem('originalGistList', JSON.stringify(settings));
       		createGistsList(document.getElementById('gist-list'));
-
-      		
-      		     		
-
 		}
 	};
 	
@@ -46,9 +42,14 @@ function clearData() {
 
 function getPages() {
 	
-	localStorage.clear();
+	localStorage.removeItem('originalGistList');
 	/*Empty the array so the next fetch won't pick up the leftovers */
 	settings.originalGistList = [];
+	//Empty the existing elements - Retrieved from MDN website
+	var element = document.getElementById("gist-list");
+	while (element.firstChild) {
+	  element.removeChild(element.firstChild);
+	}
 
 	var numberOfPages = document.getElementsByName('search-value')[0].value;
 			
@@ -71,6 +72,11 @@ function getPages() {
 
 function createGistsList(ul) {
 
+	var element = document.getElementById("gist-list");
+	while (element.firstChild) {
+	  element.removeChild(element.firstChild);
+	}
+
     settings.originalGistList.forEach(
 
 		function(s) {
@@ -84,15 +90,57 @@ function createGistsList(ul) {
 
 function createFavGistsList(ul) {
 
-    settings2.favoriteGistList.forEach(
+	var element2 = document.getElementById("favorite-gist-list");
+	while (element2.firstChild) {
+	  element2.removeChild(element2.firstChild);
+	}
+
+	settings2.favoriteGistList.forEach(
 
 		function(s) {
 			var li = document.createElement('li');
-			li.appendChild(liGist(s));
+			li.appendChild(liFavGist(s));
 			ul.appendChild(li);
 
 		}
 	); 
+}
+
+
+
+function liFavGist(g) {
+	var dl = document.createElement('dl');
+	var entry = dlFavEntry(g.descript, g.urlLink, g.gistId);
+	
+	dl.appendChild(entry.dt);
+	dl.appendChild(entry.a);
+	dl.appendChild(entry.button);
+		
+	return dl;
+}
+
+function dlFavEntry(term, definition, gistId) {
+	var dt = document.createElement('dt');
+	var a = document.createElement('a');
+	var fbutton = document.createElement("button");
+	
+	
+	dt.textContent = term;
+	//I got the link information from Stack Overflow, as I couldn't pass the code
+	//by innerHTML for some reason. http://stackoverflow.com/questions/4772774/how-do-i-create-a-link-using-javascript
+	var linkText = document.createTextNode(definition);
+	a.appendChild(linkText);
+	a.href = definition;
+	fbutton.innerHTML = "+";
+	fbutton.setAttribute("gistID", gistId);
+
+	fbutton.onclick = function(){
+	
+		removeFromFavorites(gistId);
+
+	}
+
+	return {'dt':dt, 'a':a, 'button':fbutton};
 }
 
 
@@ -133,24 +181,46 @@ function dlEntry(term, definition, gistId) {
 
 function moveToFavorites(gistId) {
 
+	
+
 	for (var i = 0; i < settings.originalGistList.length; i++) {
 
 		if(settings.originalGistList[i].gistId == gistId) {
 			settings2.favoriteGistList.push(settings.originalGistList[i]);
 			localStorage.setItem('favoriteGistList', JSON.stringify(settings2));
-
+			settings.originalGistList.splice(i, 1);
 		}
 
 	}
 
-	//createGistsList(document.getElementById('gist-list'));
+	createGistsList(document.getElementById('gist-list'));
 	createFavGistsList(document.getElementById('favorite-gist-list'));
-	settings2.favoriteGistList = [];
+	
+}
+
+function removeFromFavorites(gistId) {
+
+	
+
+	for (var i = 0; i < settings2.favoriteGistList.length; i++) {
+
+		if(settings2.favoriteGistList[i].gistId == gistId) {
+			settings.originalGistList.push(settings2.favoriteGistList[i]);
+			localStorage.setItem('originalGistList', JSON.stringify(settings));
+			settings2.favoriteGistList.splice(i, 1);
+		}
+
+	}
+
+	
+	createGistsList(document.getElementById('gist-list'));
+	createFavGistsList(document.getElementById('favorite-gist-list'));
+	
 }
 
 
 window.onload = function() {
-	localStorage.clear('originalGistList');
+	localStorage.removeItem('originalGistList');
 	
 	var settingsStr = localStorage.getItem('originalGistList');
 	if( settingsStr === null ) {
@@ -169,6 +239,8 @@ window.onload = function() {
 	else {
 		settings2 = JSON.parse(localStorage.getItem('favoriteGistList'));
 	}
+
+	createFavGistsList(document.getElementById('favorite-gist-list'));
 } 
 
 
