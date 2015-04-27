@@ -88,7 +88,7 @@ function dlFavEntry(term, definition, gistId) {
     var linkText = document.createTextNode(definition);
     a.appendChild(linkText);
     a.href = definition;
-    fbutton.innerHTML = "+";
+    fbutton.innerHTML = "-";
     fbutton.setAttribute("gistID", gistId);
 
     fbutton.onclick = function(){
