@@ -29,6 +29,9 @@ var fetchdata = function(x){
       		localStorage.setItem('originalGistList', JSON.stringify(settings));
       		createGistsList(document.getElementById('gist-list'));
 
+      		
+      		     		
+
 		}
 	};
 	
@@ -42,8 +45,10 @@ function clearData() {
 }
 
 function getPages() {
-
-	localStorage.removeItem('originalGistList');
+	
+	localStorage.clear();
+	/*Empty the array so the next fetch won't pick up the leftovers */
+	settings.originalGistList = [];
 
 	var numberOfPages = document.getElementsByName('search-value')[0].value;
 			
@@ -121,10 +126,6 @@ function dlEntry(term, definition, gistId) {
 	
 		moveToFavorites(gistId);
 
-
-	//var gistId = this.getAttribute("gistId"); //this is what you have saved before
-	//var toBeFavoredGist = findById(gistId);
-	//here you add the gist to your favorite list in the localStorage and remove it from the gist list and add it to favorite list
 	}
 
 	return {'dt':dt, 'a':a, 'button':fbutton};
@@ -142,8 +143,9 @@ function moveToFavorites(gistId) {
 
 	}
 
-	createGistsList(document.getElementById('gist-list'));
+	//createGistsList(document.getElementById('gist-list'));
 	createFavGistsList(document.getElementById('favorite-gist-list'));
+	settings2.favoriteGistList = [];
 }
 
 
